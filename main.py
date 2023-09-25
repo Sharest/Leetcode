@@ -1,7 +1,7 @@
-def twoSum(nums: list[int], target: int) -> list[int]:
+def maxProfit(prices: list[int]) -> int:
+    min_num = prices[0]
+    profit = 0
 
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[i]+nums[j] == target:
-                    return i,j
-                    
+    for i in range(1, len(prices)):
+        profit = max(profit, prices[i]-min_num)
+        min_num = min(min_num, prices[i])
