@@ -1,7 +1,10 @@
-def moveZeroes(nums: list[int]) -> None:
-    zero_arr = []
-    for _ in range(nums.count(0)):
-        nums.remove(0)
-        zero_arr.append(0)
-
-    nums.extend(zero_arr)
+def missingNumber(nums: list[int]) -> int:
+    nums.sort()
+    if 0 not in nums:
+        return 0
+    for i in range(len(nums)-1):
+        if nums[i+1] - nums[i] == 1:
+            continue
+        else:
+            return nums[i]+1
+    return len(nums)
