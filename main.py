@@ -1,6 +1,6 @@
-def majorityElement(nums: list[int]) -> int:
+def singleNumber(nums: list[int]) -> int:
     set_nums = set(nums)
     d = {}
     for i in set_nums:
         d[i] = nums.count(i)
-    return max(d, key=d.get)
+    return min(d, key=d.get)
