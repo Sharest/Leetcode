@@ -1,6 +1,7 @@
-def singleNumber(nums: list[int]) -> int:
-    set_nums = set(nums)
-    d = {}
-    for i in set_nums:
-        d[i] = nums.count(i)
-    return min(d, key=d.get)
+def removeDuplicates(nums: list[int]) -> int:
+    k = 1
+    for i in range(1, len(nums)):
+        if nums[i] != nums[i-1]:
+            nums[k] = nums[i]
+            k += 1
+    return k
