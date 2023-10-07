@@ -1,7 +1,10 @@
-def merge(nums1: list[int], m: int, nums2: list[int], n: int) -> None:
-    for i in range(n):
-        nums1[m+i] = nums2[i]
-    nums1.sort()
-    
+def generate(numRows: int) -> list[list[int]]:
+    result = [[1]]
+    for i in range(numRows-1):
+        temp_arr = [1]
+        for j in range(i):
+            temp_arr.append(result[i][j]+result[i][j+1])
+        temp_arr.append(1)
+        result.append(temp_arr)
+    return result
 
-print(merge(nums1 = [-1,0,0,3,3,3,0,0,0], m = 6, nums2 = [1,2,2], n = 3))
