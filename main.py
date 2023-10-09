@@ -1,18 +1,15 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-def sortedArrayToBST(nums: list[int]) -> TreeNode:
-    def helper_point(left, right):
-        if left > right:
-            return None
+def fizzBuzz(n: int) -> list[str]:
+    result = []
+    for i in range(1, n+1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append("FizzBuzz")
+        elif i % 5 == 0:
+            result.append("Buzz")
+        elif i % 3 == 0:
+            result.append("Fizz")
         else:
-            middle = (left + right) // 2
-            root = TreeNode(nums[middle])
-            root.left = helper_point(left, middle-1)
-            root.right = helper_point(middle+1, right)
-            return root
+            result.append(str(i))
+    return result
 
-    helper_point(0, len(nums)-1)
+
+print(fizzBuzz(15))
