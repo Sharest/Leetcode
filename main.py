@@ -1,10 +1,18 @@
-def generate(numRows: int) -> list[list[int]]:
-    result = [[1]]
-    for i in range(numRows-1):
-        temp_arr = [1]
-        for j in range(i):
-            temp_arr.append(result[i][j]+result[i][j+1])
-        temp_arr.append(1)
-        result.append(temp_arr)
-    return result
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+def sortedArrayToBST(nums: list[int]) -> TreeNode:
+    def helper_point(left, right):
+        if left > right:
+            return None
+        else:
+            middle = (left + right) // 2
+            root = TreeNode(nums[middle])
+            root.left = helper_point(left, middle-1)
+            root.right = helper_point(middle+1, right)
+            return root
 
+    helper_point(0, len(nums)-1)
