@@ -1,14 +1,20 @@
-def isAnagram(s: str, t: str) -> bool:
-    s_ls = []
-    t_ls = []
+def isHappy(n: int) -> bool:
+    check = set()
 
-    s_ls.extend(s)
-    t_ls.extend(t)
-    s_ls.sort()
-    t_ls.sort()
-    if s_ls == t_ls:
-        return True
-    else:
-        return False
+    while True:
+        if n == 1:
+            return True
+        elif n in check:
+            return False
+        check.add(n)
 
-print(isAnagram(s = "rat", t = "car"))
+        ls = []
+        while n // 10 != 0:
+            z = n % 10
+            n = n // 10
+            ls.append(z)
+        ls.append(n)
+        ls.reverse()
+        
+        sq_ls = [pow(i, 2) for i in ls]
+        n = sum(sq_ls)   
