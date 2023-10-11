@@ -1,20 +1,24 @@
-def isHappy(n: int) -> bool:
-    check = set()
+from typing import List
 
-    while True:
-        if n == 1:
-            return True
-        elif n in check:
-            return False
-        check.add(n)
 
-        ls = []
-        while n // 10 != 0:
-            z = n % 10
-            n = n // 10
-            ls.append(z)
-        ls.append(n)
-        ls.reverse()
-        
-        sq_ls = [pow(i, 2) for i in ls]
-        n = sum(sq_ls)   
+def longestCommonPrefix(strs: List[str]) -> str:
+    result: str = ''
+    if len(strs) == 1:
+        result = strs[0]
+        return result
+
+    min_len_str: str = min(strs, key=len)
+
+    for i in range(len(min_len_str)):
+        for j in range(len(strs)):
+            temp_str: str = ''
+            if min_len_str[:i+1] == strs[j][:i+1]:
+                temp_str = min_len_str[:i+1]
+            else:
+                break
+        else:
+            result = temp_str
+    return result
+
+
+print(longestCommonPrefix(["ab", "a"]))
